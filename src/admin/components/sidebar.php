@@ -4,19 +4,19 @@
         <nav>
             <ul>
                 <li class="mb-3">
-                    <a href="index.php" class="block p-3 text-gray-700 hover:bg-gray-100 rounded-lg">Dashboard</a>
+                    <a href="<?= $baseUrl ?>index.php" class="block p-3 text-gray-700 hover:bg-gray-100 rounded-lg">Dashboard</a>
                 </li>
                 <li class="mb-3">
-                    <a href="users.php" class="block p-3 text-gray-700 hover:bg-gray-100 rounded-lg">Users</a>
+                    <a href="<?= $baseUrl ?>users.php" class="block p-3 text-gray-700 hover:bg-gray-100 rounded-lg">Users</a>
                 </li>
                 <li class="mb-3">
-                    <a href="artikel.php" class="block p-3 text-gray-700 hover:bg-gray-100 rounded-lg">Artikel</a>
+                    <a href="<?= $baseUrl ?>artikel.php" class="block p-3 text-gray-700 hover:bg-gray-100 rounded-lg">Artikel</a>
                 </li>
                 <li class="mb-3">
-                    <a href="review.php" class="block p-3 text-gray-700 hover:bg-gray-100 rounded-lg">Review</a>
+                    <a href="<?= $baseUrl ?>review.php" class="block p-3 text-gray-700 hover:bg-gray-100 rounded-lg">Review</a>
                 </li>
                 <li>
-                    <a href="logout.php" class="block p-3 text-gray-700 hover:bg-gray-100 rounded-lg">Keluar</a>
+                    <a href="<?= $baseUrl ?>controller/auth_logout.php" class="block p-3 text-gray-700 hover:bg-gray-100 rounded-lg">Keluar</a>
                 </li>
             </ul>
         </nav>
