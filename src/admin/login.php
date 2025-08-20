@@ -16,6 +16,12 @@ if(isset($_SESSION['admin_id'])) {
         <div class="bg-white p-8 rounded-lg shadow-md w-96">
             <h2 class="text-2xl font-bold mb-6 text-center">Admin Login</h2>
             
+            <?php if(isset($_GET['action']) && $_GET['action'] == 'login'): ?>
+                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+                    Silahkan Login untuk mengakses halaman ini.
+                </div>
+            <?php endif; ?>
+
             <?php if(isset($_SESSION['error'])): ?>
                 <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
                     <?= $_SESSION['error']; ?>
