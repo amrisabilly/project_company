@@ -1,47 +1,47 @@
 <!-- Side Bar kiri -->
 <nav class="flex fixed left-0 top-[10em] z-40">
     <!-- Sidebar Content -->
-    <div id="sidebar" class="bg-gradient-to-b from-[#00a9ce] to-[#007a9c] h-[calc(90vh-5em)] w-[4em] transition-all duration-300 shadow-lg overflow-hidden hover:w-[13.9em] group">
+    <div id="sidebar" class="bg-gradient-to-b from-gray-100 to-gray-300 h-[calc(90vh-5em)] w-[4em] transition-all duration-300 shadow-lg overflow-hidden hover:w-[13.9em] group">
         <div class="p-3 h-full flex flex-col">
             <!-- Main Navigation -->
             <ul class="space-y-3 mt-4 flex-1">
                 <!-- Artikel Section -->
-                <li class="text-white">
-                    <div class="flex items-center hover:bg-white hover:bg-opacity-20 rounded-lg p-2 cursor-pointer transition-all duration-300" onclick="toggleSubmenu('articles')">
+                <li class="text-gray-700">
+                    <div class="flex items-center hover:bg-gray-400 hover:bg-opacity-30 rounded-lg p-2 cursor-pointer transition-all duration-300" onclick="toggleSubmenu('articles')">
                         <span class="text-lg min-w-[1.5em]">📄</span>
                         <span class="ml-3 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm font-medium">Artikel</span>
                         <span class="ml-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-xs" id="articles-arrow">▶</span>
                     </div>
                     <ul id="articles-menu" class="ml-6 mt-2 space-y-1 opacity-0 group-hover:opacity-100 transition-all duration-300 max-h-0 overflow-hidden">
-                        <li class="flex items-center text-xs text-gray-200 hover:text-white cursor-pointer py-1 pl-2 hover:bg-white hover:bg-opacity-10 rounded transition-all duration-200" onclick="loadArticleCategory('konsep')">
+                        <li class="flex items-center text-xs text-gray-600 hover:text-gray-800 cursor-pointer py-1 pl-2 hover:bg-gray-400 hover:bg-opacity-20 rounded transition-all duration-200" onclick="loadArticleCategory('konsep')">
                             <span class="mr-2 text-[10px]">•</span>Konsep
                         </li>
-                        <li class="flex items-center text-xs text-gray-200 hover:text-white cursor-pointer py-1 pl-2 hover:bg-white hover:bg-opacity-10 rounded transition-all duration-200" onclick="loadArticleCategory('teknologi')">
+                        <li class="flex items-center text-xs text-gray-600 hover:text-gray-800 cursor-pointer py-1 pl-2 hover:bg-gray-400 hover:bg-opacity-20 rounded transition-all duration-200" onclick="loadArticleCategory('teknologi')">
                             <span class="mr-2 text-[10px]">•</span>Teknologi
                         </li>
-                        <li class="flex items-center text-xs text-gray-200 hover:text-white cursor-pointer py-1 pl-2 hover:bg-white hover:bg-opacity-10 rounded transition-all duration-200" onclick="loadArticleCategory('informasi')">
+                        <li class="flex items-center text-xs text-gray-600 hover:text-gray-800 cursor-pointer py-1 pl-2 hover:bg-gray-400 hover:bg-opacity-20 rounded transition-all duration-200" onclick="loadArticleCategory('informasi')">
                             <span class="mr-2 text-[10px]">•</span>Informasi
                         </li>
-                        <li class="flex items-center text-xs text-gray-200 hover:text-white cursor-pointer py-1 pl-2 hover:bg-white hover:bg-opacity-10 rounded transition-all duration-200" onclick="loadAllArticles()">
+                        <li class="flex items-center text-xs text-gray-600 hover:text-gray-800 cursor-pointer py-1 pl-2 hover:bg-gray-400 hover:bg-opacity-20 rounded transition-all duration-200" onclick="loadAllArticles()">
                             <span class="mr-2 text-[10px]">•</span>Semua Artikel
                         </li>
                     </ul>
                 </li>
 
                 <!-- Event Gallery -->
-                <li class="flex items-center text-white hover:bg-white hover:bg-opacity-20 rounded-lg p-2 cursor-pointer transition-all duration-300" onclick="loadEventGallery()">
+                <li class="flex items-center text-gray-700 hover:bg-gray-400 hover:bg-opacity-30 rounded-lg p-2 cursor-pointer transition-all duration-300" onclick="loadEventGallery()">
                     <span class="text-lg min-w-[1.5em]">🎉</span>
                     <span class="ml-3 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm font-medium">Event Gallery</span>
                 </li>
 
                 <!-- Foto Klien -->
-                <li class="flex items-center text-white hover:bg-white hover:bg-opacity-20 rounded-lg p-2 cursor-pointer transition-all duration-300" onclick="loadPhotoGallery()">
+                <li class="flex items-center text-gray-700 hover:bg-gray-400 hover:bg-opacity-30 rounded-lg p-2 cursor-pointer transition-all duration-300" onclick="loadPhotoGallery()">
                     <span class="text-lg min-w-[1.5em]">📸</span>
                     <span class="ml-3 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm font-medium">Foto Klien</span>
                 </li>
 
                 <!-- Contact -->
-                <li class="flex items-center text-white hover:bg-white hover:bg-opacity-20 rounded-lg p-2 cursor-pointer transition-all duration-300" onclick="loadContactPage()">
+                <li class="flex items-center text-gray-700 hover:bg-gray-400 hover:bg-opacity-30 rounded-lg p-2 cursor-pointer transition-all duration-300" onclick="loadContactPage()">
                     <span class="text-lg min-w-[1.5em]">📞</span>
                     <span class="ml-3 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm font-medium">Kontak</span>
                 </li>
@@ -49,11 +49,11 @@
 
             <!-- Authentication Section at Bottom -->
             <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 mb-4">
-                <div class="border-t border-white border-opacity-30 pt-4 space-y-2">
-                    <button onclick="loadSignIn()" class="w-full bg-white bg-opacity-20 text-white text-sm py-2 px-3 rounded-md hover:bg-opacity-30 transition-all duration-300 font-medium">
+                <div class="border-t border-gray-400 border-opacity-50 pt-4 space-y-2">
+                    <button onclick="loadSignIn()" class="w-full bg-gray-400 bg-opacity-30 text-gray-700 text-sm py-2 px-3 rounded-md hover:bg-opacity-50 transition-all duration-300 font-medium">
                         Sign in
                     </button>
-                    <button onclick="loadSignUp()" class="w-full bg-white text-[#00a9ce] text-sm py-2 px-3 rounded-md hover:bg-gray-100 transition-all duration-300 font-medium">
+                    <button onclick="loadSignUp()" class="w-full bg-white text-gray-700 text-sm py-2 px-3 rounded-md hover:bg-gray-50 transition-all duration-300 font-medium border border-gray-300">
                         Sign up
                     </button>
                 </div>
@@ -63,7 +63,7 @@
 
     <!-- Toggle Button -->
     <div class="h-[calc(90vh-5em)] w-[3em] flex items-start justify-center pt-4">
-        <button onclick="toggleSidebar()" class="bg-[#00a9ce] hover:bg-[#007a9c] text-white p-2 rounded-md shadow-lg transition-all duration-300 hover:scale-105">
+        <button onclick="toggleSidebar()" class="bg-gray-500 hover:bg-gray-600 text-white p-2 rounded-md shadow-lg transition-all duration-300 hover:scale-105">
             <span id="toggleIcon">→</span>
         </button>
     </div>
@@ -183,10 +183,11 @@
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div class="bg-gray-200 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-                    <div class="h-48 bg-gradient-to-br from-gray-300 to-gray-400 flex items-center justify-center">
-                        <div class="text-center text-gray-600">
-                            <span class="text-4xl">📦</span>
-                            <p class="mt-2 text-sm">Muat Barang</p>
+                    <div class="h-48 flex items-center justify-center relative bg-cover bg-center bg-no-repeat" style="background-image: url('https://logisly.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Findex_ts.d27e9841.jpg&w=3840&q=75');">
+                        <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+                        <div class="text-center text-white relative z-10">
+                            <span class="text-4xl mb-2 block drop-shadow-lg">📦</span>
+                            <p class="text-sm font-medium drop-shadow-md">Muat Barang</p>
                         </div>
                     </div>
                     <div class="p-4">
@@ -197,10 +198,11 @@
                 </div>
 
                 <div class="bg-gray-200 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-                    <div class="h-48 bg-gradient-to-br from-blue-300 to-blue-400 flex items-center justify-center">
-                        <div class="text-center text-white">
-                            <span class="text-4xl">🚛</span>
-                            <p class="mt-2 text-sm">Armada Truk</p>
+                    <div class="h-48 flex items-center justify-center relative bg-cover bg-center bg-no-repeat" style="background-image: url('https://logisly.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Findex_ts.d27e9841.jpg&w=3840&q=75');">
+                        <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+                        <div class="text-center text-white relative z-10">
+                            <span class="text-4xl mb-2 block drop-shadow-lg">📦</span>
+                            <p class="text-sm font-medium drop-shadow-md">Muat Barang</p>
                         </div>
                     </div>
                     <div class="p-4">
@@ -211,10 +213,11 @@
                 </div>
 
                 <div class="bg-gray-200 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-                    <div class="h-48 bg-gradient-to-br from-green-300 to-green-400 flex items-center justify-center">
-                        <div class="text-center text-white">
-                            <span class="text-4xl">🏢</span>
-                            <p class="mt-2 text-sm">Gudang</p>
+                    <div class="h-48 flex items-center justify-center relative bg-cover bg-center bg-no-repeat" style="background-image: url('https://logisly.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Findex_ts.d27e9841.jpg&w=3840&q=75');">
+                        <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+                        <div class="text-center text-white relative z-10">
+                            <span class="text-4xl mb-2 block drop-shadow-lg">📦</span>
+                            <p class="text-sm font-medium drop-shadow-md">Muat Barang</p>
                         </div>
                     </div>
                     <div class="p-4">
