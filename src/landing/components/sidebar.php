@@ -50,7 +50,7 @@
             <!-- Authentication Section at Bottom -->
             <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 mb-4">
                 <div class="border-t border-gray-400 border-opacity-50 pt-4 space-y-2">
-                    <button onclick="loadSignIn()" class="w-full bg-gray-400 bg-opacity-30 text-gray-700 text-sm py-2 px-3 rounded-md hover:bg-opacity-50 transition-all duration-300 font-medium">
+                    <button onclick="loadSignIn()" class="w-full bg-[#00a9ce] text-white text-sm py-2 px-3 rounded-md hover:bg-opacity-50 transition-all duration-300 font-medium">
                         Sign in
                     </button>
                     <button onclick="loadSignUp()" class="w-full bg-white text-gray-700 text-sm py-2 px-3 rounded-md hover:bg-gray-50 transition-all duration-300 font-medium border border-gray-300">
@@ -143,10 +143,84 @@
         });
     }
 
+    // Enhanced functions for better navigation
+    function loadAboutSection() {
+        const basePath = getBasePath();
+        if (window.location.pathname.includes('home.php')) {
+            scrollToSection('about');
+        } else {
+            window.location.href = basePath + 'home.php#about';
+        }
+    }
+
+    function loadServicesSection() {
+        const basePath = getBasePath();
+        if (window.location.pathname.includes('home.php')) {
+            scrollToSection('services');
+        } else {
+            window.location.href = basePath + 'home.php#services';
+        }
+    }
+
+    // Helper function to determine the correct base path
+    function getBasePath() {
+        const currentPath = window.location.pathname;
+        if (currentPath.includes('/articles/')) {
+            return '../';
+        } else if (currentPath.includes('/components/') || currentPath.includes('/layout/')) {
+            return '../';
+        }
+        return '';
+    }
+
+    // Enhanced article navigation functions
+    function loadArticleCategory(category) {
+        try {
+            const currentPath = window.location.pathname;
+            const basePath = getBasePath();
+
+            if (currentPath.includes('articles/')) {
+                window.location.href = `${category}.php`;
+            } else {
+                window.location.href = basePath + `articles/${category}.php`;
+            }
+        } catch (error) {
+            console.error('Error loading article category:', error);
+        }
+    }
+
+    function loadAllArticles() {
+        try {
+            const currentPath = window.location.pathname;
+            const basePath = getBasePath();
+
+            if (currentPath.includes('articles/')) {
+                window.location.href = 'index.php';
+            } else {
+                window.location.href = basePath + 'articles/index.php';
+            }
+        } catch (error) {
+            console.error('Error loading all articles:', error);
+        }
+    }
+
+    // Enhanced contact page navigation
+    function loadContactPage() {
+        try {
+            const basePath = getBasePath();
+            window.location.href = basePath + 'contact.php';
+        } catch (error) {
+            console.error('Error loading contact page:', error);
+        }
+    }
+
+    // Enhanced event gallery and photo gallery for cross-page navigation
     function loadEventGallery() {
         const mainContent = document.getElementById('mainContent');
         if (!mainContent) {
-            console.error('mainContent element not found');
+            // If mainContent doesn't exist, navigate to home page
+            const basePath = getBasePath();
+            window.location.href = basePath + 'home.php';
             return;
         }
         mainContent.innerHTML = `
@@ -176,6 +250,12 @@
 
     function loadPhotoGallery() {
         const mainContent = document.getElementById('mainContent');
+        if (!mainContent) {
+            // If mainContent doesn't exist, navigate to home page
+            const basePath = getBasePath();
+            window.location.href = basePath + 'home.php';
+            return;
+        }
         mainContent.innerHTML = `
         <div class="bg-white rounded-lg shadow-md p-8">
             <h2 class="text-3xl font-bold text-[#00a9ce] mb-6">Galeri Foto Klien</h2>
@@ -183,7 +263,7 @@
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div class="bg-gray-200 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-                    <div class="h-48 flex items-center justify-center relative bg-cover bg-center bg-no-repeat" style="background-image: url('https://logisly.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Findex_ts.d27e9841.jpg&w=3840&q=75');">
+                    <div class="h-48 flex items-center justify-center relative bg-cover bg-center bg-no-repeat" style="background-image: url('https://logisly.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Findex_shipper.f2a6c4a1.jpg&w=3840&q=75');">
                         <div class="absolute inset-0 bg-black bg-opacity-40"></div>
                         <div class="text-center text-white relative z-10">
                             <span class="text-4xl mb-2 block drop-shadow-lg">📦</span>
@@ -213,7 +293,7 @@
                 </div>
 
                 <div class="bg-gray-200 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-                    <div class="h-48 flex items-center justify-center relative bg-cover bg-center bg-no-repeat" style="background-image: url('https://logisly.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Findex_ts.d27e9841.jpg&w=3840&q=75');">
+                    <div class="h-48 flex items-center justify-center relative bg-cover bg-center bg-no-repeat" style="background-image: url('https://logisly.com/_next/image?url=%2Fstatic%2Fimg%2Fkumpulan-truk.png&w=3840&q=75');">
                         <div class="absolute inset-0 bg-black bg-opacity-40"></div>
                         <div class="text-center text-white relative z-10">
                             <span class="text-4xl mb-2 block drop-shadow-lg">📦</span>
@@ -266,6 +346,12 @@
 
     function loadSignIn() {
         const mainContent = document.getElementById('mainContent');
+        if (!mainContent) {
+            // If mainContent doesn't exist, navigate to home page
+            const basePath = getBasePath();
+            window.location.href = basePath + 'home.php';
+            return;
+        }
         mainContent.innerHTML = `
         <div class="bg-white rounded-lg shadow-md p-8 max-w-md mx-auto">
             <h2 class="text-3xl font-bold text-[#00a9ce] mb-6 text-center">Masuk</h2>
@@ -288,6 +374,12 @@
 
     function loadSignUp() {
         const mainContent = document.getElementById('mainContent');
+        if (!mainContent) {
+            // If mainContent doesn't exist, navigate to home page
+            const basePath = getBasePath();
+            window.location.href = basePath + 'home.php';
+            return;
+        }
         mainContent.innerHTML = `
         <div class="bg-white rounded-lg shadow-md p-8 max-w-md mx-auto">
             <h2 class="text-3xl font-bold text-[#00a9ce] mb-6 text-center">Daftar</h2>
@@ -312,56 +404,10 @@
     `;
     }
 
-    function loadContactPage() {
-        try {
-            window.location.href = 'contact.php';
-        } catch (error) {
-            console.error('Error loading contact page:', error);
-        }
-    }
-
-    // Enhanced functions for better navigation
-    function loadAboutSection() {
-        if (window.location.pathname.includes('home.php')) {
-            scrollToSection('about');
-        } else {
-            window.location.href = 'home.php#about';
-        }
-    }
-
-    function loadServicesSection() {
-        if (window.location.pathname.includes('home.php')) {
-            scrollToSection('services');
-        } else {
-            window.location.href = 'home.php#services';
-        }
-    }
-
-    // Enhanced article navigation functions
-    function loadArticleCategory(category) {
-        try {
-            const currentPath = window.location.pathname;
-            if (currentPath.includes('articles/')) {
-                window.location.href = `${category}.php`;
-            } else {
-                window.location.href = `articles/${category}.php`;
-            }
-        } catch (error) {
-            console.error('Error loading article category:', error);
-        }
-    }
-
-    function loadAllArticles() {
-        try {
-            const currentPath = window.location.pathname;
-            if (currentPath.includes('articles/')) {
-                window.location.href = 'index.php';
-            } else {
-                window.location.href = 'articles/index.php';
-            }
-        } catch (error) {
-            console.error('Error loading all articles:', error);
-        }
+    // Add navigation to home page function
+    function goToHome() {
+        const basePath = getBasePath();
+        window.location.href = basePath + 'home.php';
     }
 
     // Initialize sidebar state

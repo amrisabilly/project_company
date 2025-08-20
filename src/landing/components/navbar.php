@@ -32,32 +32,50 @@
 <script>
     // Navigation functions
     function goToHome() {
-        window.location.href = 'home.php';
+        window.location.href = getBasePath() + 'home.php';
     }
 
     function goToContact() {
-        window.location.href = 'contact.php';
+        window.location.href = getBasePath() + 'contact.php';
+    }
+
+    // Helper function to determine the correct base path
+    function getBasePath() {
+        const currentPath = window.location.pathname;
+        if (currentPath.includes('/articles/')) {
+            return '../';
+        } else if (currentPath.includes('/components/') || currentPath.includes('/layout/')) {
+            return '../';
+        }
+        return '';
     }
 
     function scrollToSection(sectionId) {
+        const currentPath = window.location.pathname;
+
         // Check if we're on the home page
-        if (!window.location.pathname.includes('home.php') && !window.location.pathname.endsWith('/')) {
-            // If not on home page, go to home page first
-            window.location.href = 'home.php#' + sectionId;
-            return;
-        }
+        if (currentPath.includes('home.php') || currentPath.endsWith('/') || currentPath.endsWith('/index.php')) {
+            // If on home page, scroll to section
+            const element = document.getElementById(sectionId);
+            if (element) {
+                // Calculate offset for fixed navbar
+                const navbarHeight = 80; // 5em converted to pixels
+                const elementPosition = element.offsetTop - navbarHeight;
 
-        // If on home page, scroll to section
-        const element = document.getElementById(sectionId);
-        if (element) {
-            // Calculate offset for fixed navbar
-            const navbarHeight = 80; // 5em converted to pixels
-            const elementPosition = element.offsetTop - navbarHeight;
+                window.scrollTo({
+                    top: elementPosition,
+                    behavior: 'smooth'
+                });
 
-            window.scrollTo({
-                top: elementPosition,
-                behavior: 'smooth'
-            });
+                // Update URL hash without triggering scroll
+                history.pushState(null, null, '#' + sectionId);
+            } else {
+                // Section not found on current page, go to home page
+                window.location.href = getBasePath() + 'home.php#' + sectionId;
+            }
+        } else {
+            // If not on home page, navigate to home page with section
+            window.location.href = getBasePath() + 'home.php#' + sectionId;
         }
     }
 
@@ -69,5 +87,33 @@
                 scrollToSection(sectionId);
             }, 100);
         }
+    });
+
+    // Enhanced navigation function for better cross-page navigation
+    function navigateToSection(sectionId) {
+        const currentPath = window.location.pathname;
+
+        // Always go to home page for main sections
+        if (currentPath.includes('home.php')) {
+            scrollToSection(sectionId);
+        } else {
+            window.location.href = getBasePath() + 'home.php#' + sectionId;
+        }
+    }
+
+    // Override the onclick handlers to use enhanced navigation
+    document.addEventListener('DOMContentLoaded', function() {
+        // Update navbar links to use enhanced navigation
+        const navbarLinks = document.querySelectorAll('[onclick*="scrollToSection"]');
+        navbarLinks.forEach(link => {
+            const onclick = link.getAttribute('onclick');
+            if (onclick) {
+                const sectionMatch = onclick.match(/scrollToSection\('([^']+)'\)/);
+                if (sectionMatch) {
+                    const sectionId = sectionMatch[1];
+                    link.setAttribute('onclick', `navigateToSection('${sectionId}')`);
+                }
+            }
+        });
     });
 </script>
