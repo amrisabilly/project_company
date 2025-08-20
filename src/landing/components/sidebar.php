@@ -8,21 +8,21 @@
                 <!-- Artikel Section -->
                 <li class="text-white">
                     <div class="flex items-center hover:bg-white hover:bg-opacity-20 rounded-lg p-2 cursor-pointer transition-all duration-300" onclick="toggleSubmenu('articles')">
-                        <span class="text-lg">📄</span>
+                        <span class="text-lg min-w-[1.5em]">📄</span>
                         <span class="ml-3 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm font-medium">Artikel</span>
                         <span class="ml-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-xs" id="articles-arrow">▶</span>
                     </div>
-                    <ul id="articles-menu" class="ml-6 mt-2 space-y-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden">
-                        <li class="flex items-center text-xs text-gray-200 hover:text-white cursor-pointer py-1 pl-2 hover:bg-white hover:bg-opacity-10 rounded" onclick="loadArticleCategory('konsep')">
+                    <ul id="articles-menu" class="ml-6 mt-2 space-y-1 opacity-0 group-hover:opacity-100 transition-all duration-300 max-h-0 overflow-hidden">
+                        <li class="flex items-center text-xs text-gray-200 hover:text-white cursor-pointer py-1 pl-2 hover:bg-white hover:bg-opacity-10 rounded transition-all duration-200" onclick="loadArticleCategory('konsep')">
                             <span class="mr-2 text-[10px]">•</span>Konsep
                         </li>
-                        <li class="flex items-center text-xs text-gray-200 hover:text-white cursor-pointer py-1 pl-2 hover:bg-white hover:bg-opacity-10 rounded" onclick="loadArticleCategory('teknologi')">
+                        <li class="flex items-center text-xs text-gray-200 hover:text-white cursor-pointer py-1 pl-2 hover:bg-white hover:bg-opacity-10 rounded transition-all duration-200" onclick="loadArticleCategory('teknologi')">
                             <span class="mr-2 text-[10px]">•</span>Teknologi
                         </li>
-                        <li class="flex items-center text-xs text-gray-200 hover:text-white cursor-pointer py-1 pl-2 hover:bg-white hover:bg-opacity-10 rounded" onclick="loadArticleCategory('informasi')">
+                        <li class="flex items-center text-xs text-gray-200 hover:text-white cursor-pointer py-1 pl-2 hover:bg-white hover:bg-opacity-10 rounded transition-all duration-200" onclick="loadArticleCategory('informasi')">
                             <span class="mr-2 text-[10px]">•</span>Informasi
                         </li>
-                        <li class="flex items-center text-xs text-gray-200 hover:text-white cursor-pointer py-1 pl-2 hover:bg-white hover:bg-opacity-10 rounded" onclick="loadAllArticles()">
+                        <li class="flex items-center text-xs text-gray-200 hover:text-white cursor-pointer py-1 pl-2 hover:bg-white hover:bg-opacity-10 rounded transition-all duration-200" onclick="loadAllArticles()">
                             <span class="mr-2 text-[10px]">•</span>Semua Artikel
                         </li>
                     </ul>
@@ -30,26 +30,25 @@
 
                 <!-- Event Gallery -->
                 <li class="flex items-center text-white hover:bg-white hover:bg-opacity-20 rounded-lg p-2 cursor-pointer transition-all duration-300" onclick="loadEventGallery()">
-                    <span class="text-lg">🎉</span>
+                    <span class="text-lg min-w-[1.5em]">🎉</span>
                     <span class="ml-3 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm font-medium">Event Gallery</span>
                 </li>
 
                 <!-- Foto Klien -->
                 <li class="flex items-center text-white hover:bg-white hover:bg-opacity-20 rounded-lg p-2 cursor-pointer transition-all duration-300" onclick="loadPhotoGallery()">
-                    <span class="text-lg">📸</span>
+                    <span class="text-lg min-w-[1.5em]">📸</span>
                     <span class="ml-3 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm font-medium">Foto Klien</span>
                 </li>
 
                 <!-- Contact -->
                 <li class="flex items-center text-white hover:bg-white hover:bg-opacity-20 rounded-lg p-2 cursor-pointer transition-all duration-300" onclick="loadContactPage()">
-                    <span class="text-lg">📞</span>
+                    <span class="text-lg min-w-[1.5em]">📞</span>
                     <span class="ml-3 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm font-medium">Kontak</span>
                 </li>
-
             </ul>
 
             <!-- Authentication Section at Bottom -->
-            <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 mb-6">
+            <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 mb-4">
                 <div class="border-t border-white border-opacity-30 pt-4 space-y-2">
                     <button onclick="loadSignIn()" class="w-full bg-white bg-opacity-20 text-white text-sm py-2 px-3 rounded-md hover:bg-opacity-30 transition-all duration-300 font-medium">
                         Sign in
@@ -63,26 +62,53 @@
     </div>
 
     <!-- Toggle Button -->
-    <div class="h-[calc(100vh-5em)] w-[4em] flex items-start justify-center pt-4">
-        <button onclick="toggleSidebar()" class="bg-[#00a9ce] hover:bg-[#007a9c] text-white p-3 rounded-md shadow-lg transition-all duration-300 hover:scale-105">
+    <div class="h-[calc(90vh-5em)] w-[3em] flex items-start justify-center pt-4">
+        <button onclick="toggleSidebar()" class="bg-[#00a9ce] hover:bg-[#007a9c] text-white p-2 rounded-md shadow-lg transition-all duration-300 hover:scale-105">
             <span id="toggleIcon">→</span>
         </button>
     </div>
 </nav>
 
 <script>
+    let sidebarExpanded = false;
+
     function toggleSidebar() {
         const sidebar = document.getElementById('sidebar');
         const toggleIcon = document.getElementById('toggleIcon');
 
-        if (sidebar.classList.contains('w-[4em]')) {
-            sidebar.classList.remove('w-[4em]', 'hover:w-[15em]');
-            sidebar.classList.add('w-[15em]');
+        if (!sidebarExpanded) {
+            sidebar.classList.remove('hover:w-[13.9em]');
+            sidebar.classList.add('w-[13.9em]', '!opacity-100');
+            sidebar.classList.remove('group');
+
+            // Force show all text
+            const hiddenElements = sidebar.querySelectorAll('.opacity-0');
+            hiddenElements.forEach(el => {
+                el.classList.remove('opacity-0');
+                el.classList.add('opacity-100');
+            });
+
             toggleIcon.textContent = '←';
+            sidebarExpanded = true;
         } else {
-            sidebar.classList.remove('w-[15em]');
-            sidebar.classList.add('w-[4em]', 'hover:w-[15em]');
+            sidebar.classList.add('hover:w-[13.9em]');
+            sidebar.classList.remove('w-[13.9em]', '!opacity-100');
+            sidebar.classList.add('group');
+
+            // Reset opacity classes
+            const shownElements = sidebar.querySelectorAll('.opacity-100');
+            shownElements.forEach(el => {
+                if (!el.id || el.id !== 'toggleIcon') {
+                    el.classList.remove('opacity-100');
+                    el.classList.add('opacity-0', 'group-hover:opacity-100');
+                }
+            });
+
             toggleIcon.textContent = '→';
+            sidebarExpanded = false;
+
+            // Close any open submenus
+            closeAllSubmenus();
         }
     }
 
@@ -90,17 +116,39 @@
         const menu = document.getElementById(menuId + '-menu');
         const arrow = document.getElementById(menuId + '-arrow');
 
-        if (menu.classList.contains('hidden')) {
-            menu.classList.remove('hidden');
+        if (!menu || !arrow) return;
+
+        if (menu.classList.contains('max-h-0')) {
+            menu.classList.remove('max-h-0');
+            menu.classList.add('max-h-96');
             arrow.textContent = '▼';
         } else {
-            menu.classList.add('hidden');
+            menu.classList.remove('max-h-96');
+            menu.classList.add('max-h-0');
             arrow.textContent = '▶';
         }
     }
 
+    function closeAllSubmenus() {
+        const submenus = document.querySelectorAll('[id$="-menu"]');
+        const arrows = document.querySelectorAll('[id$="-arrow"]');
+
+        submenus.forEach(menu => {
+            menu.classList.remove('max-h-96');
+            menu.classList.add('max-h-0');
+        });
+
+        arrows.forEach(arrow => {
+            arrow.textContent = '▶';
+        });
+    }
+
     function loadEventGallery() {
         const mainContent = document.getElementById('mainContent');
+        if (!mainContent) {
+            console.error('mainContent element not found');
+            return;
+        }
         mainContent.innerHTML = `
         <div class="bg-white rounded-lg shadow-md p-8">
             <h2 class="text-3xl font-bold text-[#00a9ce] mb-6">Galeri Acara</h2>
@@ -262,11 +310,11 @@
     }
 
     function loadContactPage() {
-        window.location.href = 'contact.php';
-    }
-
-    function loadHomePage() {
-        window.location.href = 'home.php';
+        try {
+            window.location.href = 'contact.php';
+        } catch (error) {
+            console.error('Error loading contact page:', error);
+        }
     }
 
     // Enhanced functions for better navigation
@@ -288,20 +336,33 @@
 
     // Enhanced article navigation functions
     function loadArticleCategory(category) {
-        const currentPath = window.location.pathname;
-        if (currentPath.includes('articles/')) {
-            window.location.href = `${category}.php`;
-        } else {
-            window.location.href = `articles/${category}.php`;
+        try {
+            const currentPath = window.location.pathname;
+            if (currentPath.includes('articles/')) {
+                window.location.href = `${category}.php`;
+            } else {
+                window.location.href = `articles/${category}.php`;
+            }
+        } catch (error) {
+            console.error('Error loading article category:', error);
         }
     }
 
     function loadAllArticles() {
-        const currentPath = window.location.pathname;
-        if (currentPath.includes('articles/')) {
-            window.location.href = 'index.php';
-        } else {
-            window.location.href = 'articles/index.php';
+        try {
+            const currentPath = window.location.pathname;
+            if (currentPath.includes('articles/')) {
+                window.location.href = 'index.php';
+            } else {
+                window.location.href = 'articles/index.php';
+            }
+        } catch (error) {
+            console.error('Error loading all articles:', error);
         }
     }
+
+    // Initialize sidebar state
+    document.addEventListener('DOMContentLoaded', function() {
+        closeAllSubmenus();
+    });
 </script>

@@ -11,7 +11,7 @@
     <div class="bg-white rounded-lg shadow-md overflow-hidden mb-8">
         <div class="relative h-96" id="carousel">
             <!-- Slide 1 -->
-            <div class="carousel-slide active absolute inset-0 bg-gradient-to-r from-[#00a9ce] to-[#007a9c] flex items-center justify-between px-12">
+            <div class="carousel-slide active absolute inset-0 flex items-center justify-between px-12" style="background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url('https://cdn.pixabay.com/photo/2017/01/29/15/21/container-2018508_1280.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
                 <div class="text-white max-w-md">
                     <h1 class="text-4xl font-bold mb-4">Solusi Swift Logistik</h1>
                     <p class="text-lg mb-6">Menghadirkan keunggulan di seluruh nusantara dengan layanan pengiriman dan logistik yang terpercaya</p>
@@ -19,36 +19,25 @@
                         Dapatkan Penawaran
                     </button>
                 </div>
-                <div class="text-white text-8xl opacity-50">
-                    🚛
-                </div>
             </div>
 
-            <!-- Slide 2 -->
-            <div class="carousel-slide absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-800 flex items-center justify-between px-12 opacity-0">
+            <div class="carousel-slide absolute inset-0 flex items-center justify-between px-12" style="background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url('https://cdn.pixabay.com/photo/2017/01/29/15/15/containers-2018438_1280.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
                 <div class="text-white max-w-md">
                     <h1 class="text-4xl font-bold mb-4">Jangkauan Jaringan Global</h1>
                     <p class="text-lg mb-6">Hubungkan bisnis Anda ke seluruh dunia dengan jaringan logistik yang luas</p>
-                    <button class="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
-                        Pelajari Lebih Lanjut
+                    <button class="bg-white text-[#00a9ce] px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                        Dapatkan Penawaran
                     </button>
-                </div>
-                <div class="text-white text-8xl opacity-50">
-                    🌍
                 </div>
             </div>
 
-            <!-- Slide 3 -->
-            <div class="carousel-slide absolute inset-0 bg-gradient-to-r from-green-600 to-green-800 flex items-center justify-between px-12 opacity-0">
+            <div class="carousel-slide absolute inset-0 flex items-center justify-between px-12" style="background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url('https://cdn.pixabay.com/photo/2019/05/12/06/14/container-4197259_1280.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
                 <div class="text-white max-w-md">
                     <h1 class="text-4xl font-bold mb-4">Fasilitas Gudang Modern</h1>
                     <p class="text-lg mb-6">Solusi penyimpanan terdepan untuk semua kebutuhan logistik Anda</p>
-                    <button class="bg-white text-green-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
-                        Lihat Fasilitas
+                    <button class="bg-white text-[#00a9ce] px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                        Dapatkan Penawaran
                     </button>
-                </div>
-                <div class="text-white text-8xl opacity-50">
-                    🏢
                 </div>
             </div>
 
