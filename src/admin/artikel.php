@@ -20,6 +20,7 @@ include 'components/sidebar.php';
         <table class="w-full">
             <thead>
                 <tr>
+                    <th class="text-left py-2">Kategori</th>
                     <th class="text-left py-2">Judul</th>
                     <th class="text-left py-2">Deskripsi</th>
                     <th class="text-left py-2 w-32">Aksi</th>
@@ -28,6 +29,18 @@ include 'components/sidebar.php';
             <tbody>
                 <?php while($row = mysqli_fetch_assoc($result)): ?>
                 <tr class="border-t">
+                    <td class="py-3">
+                        <span class="px-2 py-1 text-sm rounded-full <?php
+                            echo match($row['kategori']) {
+                                'konsep' => 'bg-blue-100 text-blue-800',
+                                'teknologi' => 'bg-green-100 text-green-800',
+                                'informasi' => 'bg-purple-100 text-purple-800',
+                                default => 'bg-gray-100 text-gray-800'
+                            };
+                        ?>">
+                            <?= ucfirst($row['kategori'] ?: 'Uncategorized') ?>
+                        </span>
+                    </td>
                     <td class="py-3"><?= $row['judul'] ?></td>
                     <td class="py-3"><?= substr($row['deskripsi'], 0, 100) ?>...</td>
                     <td class="py-3">

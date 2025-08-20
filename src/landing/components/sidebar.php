@@ -50,12 +50,12 @@
             <!-- Authentication Section at Bottom -->
             <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 mb-4">
                 <div class="border-t border-gray-400 border-opacity-50 pt-4 space-y-2">
-                    <button onclick="loadSignIn()" class="w-full bg-[#00a9ce] text-white text-sm py-2 px-3 rounded-md hover:bg-opacity-50 transition-all duration-300 font-medium">
-                        Sign in
-                    </button>
-                    <button onclick="loadSignUp()" class="w-full bg-white text-gray-700 text-sm py-2 px-3 rounded-md hover:bg-gray-50 transition-all duration-300 font-medium border border-gray-300">
-                        Sign up
-                    </button>
+                    <a href="../auth/login.php" class="block w-full bg-[#00a9ce] text-white text-sm py-2 px-3 rounded-md hover:bg-opacity-80 transition-all duration-300 font-medium text-center">
+                        Masuk
+                    </a>
+                    <a href="../auth/register.php" class="block w-full bg-white text-gray-700 text-sm py-2 px-3 rounded-md hover:bg-gray-50 transition-all duration-300 font-medium border border-gray-300 text-center">
+                        Daftar
+                    </a>
                 </div>
             </div>
         </div>

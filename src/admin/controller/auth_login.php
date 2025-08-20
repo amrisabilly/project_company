@@ -20,6 +20,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     
     $_SESSION['error'] = 'Email atau password salah!';
-    header('Location: ../login.php');
+    header('Location: ../../landing/auth/login.php?action=login_gagal');
     exit;
 }

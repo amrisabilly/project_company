@@ -2,8 +2,9 @@
 require_once '../config.php';
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $judul = $_POST['judul'];
-    $deskripsi = $_POST['deskripsi'];
+    $kategori = mysqli_real_escape_string($conn, $_POST['kategori']);
+    $judul = mysqli_real_escape_string($conn, $_POST['judul']);
+    $deskripsi = mysqli_real_escape_string($conn, $_POST['deskripsi']);
     
     $foto = '';
     if($_FILES['foto']['name']) {
@@ -11,8 +12,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         move_uploaded_file($_FILES['foto']['tmp_name'], '../uploads/' . $foto);
     }
     
-    mysqli_query($conn, "INSERT INTO artikel (judul, deskripsi, foto, created_at) 
-                        VALUES ('$judul', '$deskripsi', '$foto', NOW())");
+    mysqli_query($conn, "INSERT INTO artikel (kategori, judul, deskripsi, foto, created_at) 
+                        VALUES ('$kategori', '$judul', '$deskripsi', '$foto', NOW())");
                         
     header('Location: ../artikel.php');
     exit;
@@ -28,6 +29,16 @@ include '../components/sidebar.php';
     
     <div class="bg-white rounded-lg shadow p-6">
         <form method="POST" enctype="multipart/form-data">
+            <div class="mb-4">
+                <label class="block mb-2">Kategori</label>
+                <select name="kategori" class="w-full border rounded px-3 py-2" required>
+                    <option value="">Pilih Kategori</option>
+                    <option value="konsep">Konsep</option>
+                    <option value="teknologi">Teknologi</option>
+                    <option value="informasi">Informasi</option>
+                </select>
+            </div>
+            
             <div class="mb-4">
                 <label class="block mb-2">Judul</label>
                 <input type="text" name="judul" class="w-full border rounded px-3 py-2" required>

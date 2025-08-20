@@ -11,7 +11,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $check = mysqli_query($conn, "SELECT id_user FROM users WHERE email = '$email'");
     if(mysqli_num_rows($check) > 0) {
         $_SESSION['error'] = 'Email sudah terdaftar';
-        header('Location: ../register.php');
+        header('Location: ../../landing/auth/register.php');
         exit;
     }
     
@@ -20,12 +20,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
               VALUES ('$nama', '$email', '$password', 'admin')";
               
     if(mysqli_query($conn, $query)) {
-        $_SESSION['success'] = 'Registrasi berhasil! Silakan login.';
-        header('Location: ../login.php');
+        header('Location: ../../landing/auth/login.php?action=register_success');
         exit;
     } else {
         $_SESSION['error'] = 'Terjadi kesalahan saat registrasi';
-        header('Location: ../register.php');
+        header('Location: ../../landing/auth/register.php');
         exit;
     }
 }

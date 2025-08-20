@@ -1,5 +1,4 @@
 <?php
-session_start(); // Start the session
+session_start(); 
 session_destroy();
-header('Location: ../login.php');
-exit;
+header('Location: ../../landing/auth/login.php'); 

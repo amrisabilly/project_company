@@ -5,8 +5,9 @@ $id = $_GET['id'];
 $artikel = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM artikel WHERE id_artikel = $id"));
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $judul = $_POST['judul'];
-    $deskripsi = $_POST['deskripsi'];
+    $kategori = mysqli_real_escape_string($conn, $_POST['kategori']);
+    $judul = mysqli_real_escape_string($conn, $_POST['judul']);
+    $deskripsi = mysqli_real_escape_string($conn, $_POST['deskripsi']);
     
     $foto = $artikel['foto'];
     if($_FILES['foto']['name']) {
@@ -19,6 +20,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     
     mysqli_query($conn, "UPDATE artikel SET 
+                        kategori = '$kategori',
                         judul = '$judul',
                         deskripsi = '$deskripsi',
                         foto = '$foto'
@@ -38,6 +40,16 @@ include '../components/sidebar.php';
     
     <div class="bg-white rounded-lg shadow p-6">
         <form method="POST" enctype="multipart/form-data">
+            <div class="mb-4">
+                <label class="block mb-2">Kategori</label>
+                <select name="kategori" class="w-full border rounded px-3 py-2" required>
+                    <option value="">Pilih Kategori</option>
+                    <option value="konsep" <?= $artikel['kategori'] == 'konsep' ? 'selected' : '' ?>>Konsep</option>
+                    <option value="teknologi" <?= $artikel['kategori'] == 'teknologi' ? 'selected' : '' ?>>Teknologi</option>
+                    <option value="informasi" <?= $artikel['kategori'] == 'informasi' ? 'selected' : '' ?>>Informasi</option>
+                </select>
+            </div>
+            
             <div class="mb-4">
                 <label class="block mb-2">Judul</label>
                 <input type="text" name="judul" value="<?= $artikel['judul'] ?>" class="w-full border rounded px-3 py-2" required>
