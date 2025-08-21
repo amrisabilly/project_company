@@ -1,12 +1,14 @@
 <?php include '../layout/header.php' ?>
 
 <?php include '../components/navbar.php' ?>
+<style>
+    body {
+        overflow: hidden;
+    }
+</style>
 
-<!-- Side Bar kiri -->
-<?php include '../components/sidebar.php' ?>
-<br><br><br>
-<div class="min-h-screen flex flex-col justify-center items-center px-4">
-    <div class="bg-white rounded-xl shadow-lg px-8 sm:px-16 py-8 max-w-md w-full">
+<div class="fixed inset-0 flex items-center justify-center bg-gray-50 overflow-hidden mt-[5em]">
+    <div class="bg-white rounded-xl shadow-lg px-8 sm:px-16 py-8 max-w-md w-full mx-4 z-10">
         <h2 class="text-3xl font-bold text-[#00a9ce] mb-8 text-center">Masuk</h2>
 
         <?php if (isset($_SESSION['error'])): ?>
@@ -17,14 +19,14 @@
         <?php endif; ?>
 
         <?php
-        if(isset($_GET['action']) && $_GET['action'] == 'register_success'): ?>
+        if (isset($_GET['action']) && $_GET['action'] == 'register_success'): ?>
             <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
                 Registrasi berhasil! Silakan masuk.
             </div>
         <?php endif; ?>
 
         <?php
-        if(isset($_GET['action']) && $_GET['action'] == 'login_gagal'): ?>
+        if (isset($_GET['action']) && $_GET['action'] == 'login_gagal'): ?>
             <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
                 Email atau password salah!
             </div>
@@ -50,6 +52,7 @@
         </div>
     </div>
 </div>
-<!-- <?php include '../components/footer.php' ?> -->
+
+
 
 <?php include '../layout/end-header.php' ?>

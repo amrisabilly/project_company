@@ -3,7 +3,6 @@
 <?php include 'components/navbar.php' ?>
 
 <!-- Side Bar kiri -->
-<?php include 'components/sidebar.php' ?>
 
 <!-- Main Content Area -->
 <div class="ml-[8em] p-6 pt-[15em]" id="mainContent">

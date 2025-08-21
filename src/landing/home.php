@@ -534,6 +534,6 @@
     });
 </script>
 
-<!-- <?php include 'components/footer.php' ?> -->
+<?php include 'components/footer.php' ?>
 
 <?php include 'layout/end-header.php' ?>

@@ -6,7 +6,7 @@ function getBaseUrl()
     $basePath = '';
 
     if (strpos($currentPath, '/articles/') !== false) {
-        $basePath = '../../landing/';
+        $basePath = '../';
     } elseif (strpos($currentPath, '/auth/') !== false) {
         $basePath = '../../landing/';
     } elseif (strpos($currentPath, '/components/') !== false || strpos($currentPath, '/layout/') !== false) {
@@ -19,13 +19,31 @@ function getBaseUrl()
 }
 
 $baseUrl = getBaseUrl();
+
+// Function to get logo path
+function getLogoPath()
+{
+    $currentPath = $_SERVER['PHP_SELF'];
+
+    if (strpos($currentPath, '/articles/') !== false) {
+        return '../components/logo.png';
+    } elseif (strpos($currentPath, '/auth/') !== false) {
+        return '../../landing/components/logo.png';
+    } elseif (strpos($currentPath, '/components/') !== false || strpos($currentPath, '/layout/') !== false) {
+        return 'logo.png';
+    } else {
+        return 'components/logo.png';
+    }
+}
+
+$logoPath = getLogoPath();
 ?>
 
 <div class="fixed top-0 left-0 z-50">
     <!-- Sidebar Column -->
     <div class="bg-gradient-to-b from-gray-100 to-gray-300 w-[4em] h-screen transition-all duration-300 shadow-lg hover:w-[13.9em] group absolute z-50">
         <a href="<?= $baseUrl ?>home.php" class="h-[9.5em] w-full  flex items-center justify-center relative  hover:opacity-90 transition-opacity">
-            <img src="components/logo.png" alt="" width="100" height="100">
+            <img src="<?= $logoPath ?>" alt="Swift Logistik" width="70" height="70" class="object-contain">
         </a>
 
         <div class="p-3 flex flex-col h-[calc(100vh-9.5em)]">
@@ -37,48 +55,62 @@ $baseUrl = getBaseUrl();
                         <span class="ml-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-xs" id="articles-arrow">▶</span>
                     </div>
                     <ul id="articles-menu" class="ml-6 mt-2 space-y-1 opacity-0 group-hover:opacity-100 transition-all duration-300 max-h-0 overflow-hidden">
-                        <li class="flex items-center text-xs text-gray-600 hover:text-gray-800 cursor-pointer py-1 pl-2 hover:bg-gray-400 hover:bg-opacity-20 rounded transition-all duration-200" onclick="loadArticleCategory('konsep')">
-                            <span class="mr-2 text-[10px]">•</span>Konsep
+                        <li class="flex items-center text-xs text-gray-600 hover:text-gray-800 cursor-pointer py-1 pl-2 hover:bg-gray-400 hover:bg-opacity-20 rounded transition-all duration-200">
+                            <a href="<?= $baseUrl ?>articles/konsep.php" class="flex items-center w-full">
+                                <span class="mr-2 text-[10px]">•</span>Konsep
+                            </a>
                         </li>
 
-                        <li class="flex items-center text-xs text-gray-600 hover:text-gray-800 cursor-pointer py-1 pl-2 hover:bg-gray-400 hover:bg-opacity-20 rounded transition-all duration-200" onclick="loadArticleCategory('teknologi')">
-                            <span class="mr-2 text-[10px]">•</span>Teknologi
+                        <li class="flex items-center text-xs text-gray-600 hover:text-gray-800 cursor-pointer py-1 pl-2 hover:bg-gray-400 hover:bg-opacity-20 rounded transition-all duration-200">
+                            <a href="<?= $baseUrl ?>articles/teknologi.php" class="flex items-center w-full">
+                                <span class="mr-2 text-[10px]">•</span>Teknologi
+                            </a>
                         </li>
-                        <li class="flex items-center text-xs text-gray-600 hover:text-gray-800 cursor-pointer py-1 pl-2 hover:bg-gray-400 hover:bg-opacity-20 rounded transition-all duration-200" onclick="loadArticleCategory('informasi')">
-                            <span class="mr-2 text-[10px]">•</span>Informasi
+                        <li class="flex items-center text-xs text-gray-600 hover:text-gray-800 cursor-pointer py-1 pl-2 hover:bg-gray-400 hover:bg-opacity-20 rounded transition-all duration-200">
+                            <a href="<?= $baseUrl ?>articles/informasi.php" class="flex items-center w-full">
+                                <span class="mr-2 text-[10px]">•</span>Informasi
+                            </a>
                         </li>
-                        <li class="flex items-center text-xs text-gray-600 hover:text-gray-800 cursor-pointer py-1 pl-2 hover:bg-gray-400 hover:bg-opacity-20 rounded transition-all duration-200" onclick="loadAllArticles()">
-                            <span class="mr-2 text-[10px]">•</span>Semua Artikel
+                        <li class="flex items-center text-xs text-gray-600 hover:text-gray-800 cursor-pointer py-1 pl-2 hover:bg-gray-400 hover:bg-opacity-20 rounded transition-all duration-200">
+                            <a href="<?= $baseUrl ?>articles/index.php" class="flex items-center w-full">
+                                <span class="mr-2 text-[10px]">•</span>Semua Artikel
+                            </a>
                         </li>
                     </ul>
                 </li>
 
-                <!--  -->
-                <li class="flex items-center text-gray-700 hover:bg-gray-400 hover:bg-opacity-30 rounded-lg p-2 cursor-pointer transition-all duration-300" onclick="loadEventGallery()">
-                    <span class="text-lg min-w-[1.5em]">🎉</span>
-                    <span class="ml-3 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm font-medium">Event Gallery</span>
+                <!-- Event Gallery -->
+                <li class="flex items-center text-gray-700 hover:bg-gray-400 hover:bg-opacity-30 rounded-lg p-2 cursor-pointer transition-all duration-300">
+                    <a href="<?= $baseUrl ?>event-galeri.php" class="flex items-center w-full">
+                        <span class="text-lg min-w-[1.5em]">🎉</span>
+                        <span class="ml-3 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm font-medium">Event Gallery</span>
+                    </a>
                 </li>
 
-
-                <li class="flex items-center text-gray-700 hover:bg-gray-400 hover:bg-opacity-30 rounded-lg p-2 cursor-pointer transition-all duration-300" onclick="loadPhotoGallery()">
-                    <span class="text-lg min-w-[1.5em]">📸</span>
-                    <span class="ml-3 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm font-medium">Foto Klien</span>
+                <!-- Foto Klien -->
+                <li class="flex items-center text-gray-700 hover:bg-gray-400 hover:bg-opacity-30 rounded-lg p-2 cursor-pointer transition-all duration-300">
+                    <a href="<?= $baseUrl ?>foto-klien.php" class="flex items-center w-full">
+                        <span class="text-lg min-w-[1.5em]">📸</span>
+                        <span class="ml-3 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm font-medium">Foto Klien</span>
+                    </a>
                 </li>
 
-                <li class="flex items-center text-gray-700 hover:bg-gray-400 hover:bg-opacity-30 rounded-lg p-2 cursor-pointer transition-all duration-300" onclick="loadContactPage()">
-                    <span class="text-lg min-w-[1.5em]">📞</span>
-                    <span class="ml-3 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm font-medium">Kontak</span>
+                <!-- Contact -->
+                <li class="flex items-center text-gray-700 hover:bg-gray-400 hover:bg-opacity-30 rounded-lg p-2 cursor-pointer transition-all duration-300">
+                    <a href="<?= $baseUrl ?>contact.php" class="flex items-center w-full">
+                        <span class="text-lg min-w-[1.5em]">📞</span>
+                        <span class="ml-3 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm font-medium">Kontak</span>
+                    </a>
                 </li>
             </ul>
-
 
             <!-- Authentication Section at Bottom -->
             <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 mb-4">
                 <div class="border-t border-gray-400 border-opacity-50 pt-4 space-y-2">
-                    <a href="<?= $baseUrl ?>../auth/login.php" class="block w-full bg-[#00a9ce] text-white text-sm py-2 px-3 rounded-md hover:bg-opacity-80 transition-all duration-300 font-medium text-center">
+                    <a href="<?= $baseUrl ?>auth/login.php" class="block w-full bg-[#00a9ce] text-white text-sm py-2 px-3 rounded-md hover:bg-opacity-80 transition-all duration-300 font-medium text-center">
                         Masuk
                     </a>
-                    <a href="<?= $baseUrl ?>../auth/register.php" class="block w-full bg-white text-gray-700 text-sm py-2 px-3 rounded-md hover:bg-gray-50 transition-all duration-300 font-medium border border-gray-300 text-center">
+                    <a href="<?= $baseUrl ?>auth/register.php" class="block w-full bg-white text-gray-700 text-sm py-2 px-3 rounded-md hover:bg-gray-50 transition-all duration-300 font-medium border border-gray-300 text-center">
                         Daftar
                     </a>
                 </div>
@@ -122,31 +154,5 @@ $baseUrl = getBaseUrl();
             submenu.style.maxHeight = '0px';
             arrow.innerHTML = '▶';
         }
-    }
-
-    // Placeholder functions for menu actions
-    function loadArticleCategory(category) {
-        console.log('Loading articles for category:', category);
-        // Implement your category loading logic here
-    }
-
-    function loadAllArticles() {
-        console.log('Loading all articles');
-        // Implement your all articles loading logic here
-    }
-
-    function loadEventGallery() {
-        console.log('Loading event gallery');
-        // Implement your event gallery loading logic here
-    }
-
-    function loadPhotoGallery() {
-        console.log('Loading photo gallery');
-        // Implement your photo gallery loading logic here
-    }
-
-    function loadContactPage() {
-        console.log('Loading contact page');
-        // Implement your contact page loading logic here
     }
 </script>
